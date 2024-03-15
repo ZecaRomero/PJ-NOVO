@@ -1,0 +1,236 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+@font-face {
+    font-family: 'Android';
+    src:url('idroid.otf') format('opentype');
+    font-weight: normal;
+
+}
+
+:root {  /* tudo que for anotado aqui serve pro documento inteiro, isso abaixo são VARIAVEISc começa com --  */
+
+    --cor0: #c5ebd6;
+    --cor1: #83e1ad;
+    --cor2: #3ddc84;
+    --cor3: #2fa866;
+    --cor4: #1a5c37;
+    --cor5: #06130c;
+
+    --font-padrao: Arial, Verdana, Helvetica, sans-serif;
+    --font-destaque: "Bebas Neue", cursive;
+    --font-android: 'Android', cursive;
+}
+
+* { /* configuração global para todas as tags relacionada, tira todos os espaços */
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+body{
+    background-color: var(--cor0);
+    font-family: var(--font-padrao);
+}
+
+a.externo::after { /* todos os links que forem da classe EXTERNO */
+    content: '\00a0\1f517';
+    
+}
+
+header { /* Quadrado onde esta Curiosidade de tecnologia */
+    
+    background-image: linear-gradient(to right, rgb(5, 47, 36), green);
+    min-height: 150px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+
+header > h1 {  /* CURIOSIDADE DE TECNOLOGIA */
+
+   color: rgb(132, 228, 115);
+   font-family: var(--font-destaque);
+   font-size: 3em;
+   font-weight: normal;
+   margin-bottom: 20px;
+   text-shadow: 2px 2px 0px rgba(3, 19, 29, 0.726); /* CRIAR SOMBRA */
+   
+}
+
+header > p { /*Tudo aquilo que voce sempre quis saber o mundo tech, em um unico lugar*/
+    font-family: var(--font-padrao);
+    font-size: 1.2em;  
+    color: rgb(243, 252, 252);
+    max-width: 600px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(14, 3, 12, 0.726); /* CRIAR SOMBRA */
+}
+
+nav {  /* NAV é o MENU */
+
+    background-color: var(--cor5);
+    background-image: linear-gradient(to right, rgb(5, 47, 36), green);
+    padding: 10px;
+    box-shadow: 0px 7px 7px rgb(16, 118, 35);
+}
+
+nav > a { /* O (a) quer diser o link que esta dentro de NAV ( NAV é o Menu) */
+
+    color: var(--cor1);
+    padding: 10px; /* Da uma separada nos Menus */
+    text-decoration: none; /* para tirar o sublinhado */
+    font-weight: bold;
+    border-radius: 5px;
+    transition-duration: 1s;
+  
+}
+
+nav > a:hover {  /* isso é pseudoclasse, muito legal */
+
+    background-color: var(--cor3);
+    color: var(--cor5);
+
+}
+
+
+main {  /*  MAIN É O CONTEUDO PRINCIPAL */
+
+    min-width: 300px; /* largura minina */
+    max-width: 1000px; /* largura maxima */
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0px 0px 80px rgb(34, 131, 14);  /* SOMBRA */
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+main h1{
+
+    color: var(--cor5);
+    font-family: var(--font-android);
+    font-weight: normal;
+    font-size: 1.8em; 
+
+}
+
+main h2{  
+
+    font-family: var(--font-android);   
+    color: var(--cor4);
+    font-size: 1.3em;
+    font-weight: normal;
+    background-image: linear-gradient(to right, var(--cor1), transparent); /* Efeito Degrade */
+    text-indent: 8px;    
+}
+
+main p {
+    margin: 15px 0px; 
+    text-align: justify;
+    text-indent: 30px; /* recuo no inicio dos textos */
+    font-size: 1em; /* tamanho da fonte */
+    line-height: 2em; /* altura entre linhas */
+
+}
+
+main strong{
+    color: var(--cor4);
+    font-weight: bold;
+    
+}
+
+main a{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--cor5);
+    background-color: var(--cor1);
+    padding: 2px 6px;
+}
+
+main a:hover{
+    text-decoration: underline;
+    color: var(--cor4);
+}
+
+main img {
+    width: 100%;
+}
+
+main img.pequena{ /* imagem do bugdroid */
+
+    max-width: 350px;
+    display: block;
+    margin: auto;
+}
+
+div.video { /* Toda DIV com a classe video */
+    background-color: var(--cor4);
+    margin: 0px -20px 30px -20px;
+    padding: 20px;
+    padding-bottom: 57%;
+    position: relative
+
+}
+
+div.video > iframe{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    
+
+}
+
+aside { /* onde esta escrito Quer aprender mais ?*/
+
+    background-color: var(--cor1);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px black;
+}
+
+aside > h3 { /* h3  que esta dentro do aside */
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px;
+    margin: -10px -10px 0px -10px;
+    border-radius: 10px 10px 0px 0px;
+    
+}
+
+aside > ul { /* Lista que esta dentro no ASIDE */
+
+    list-style-type: '\2714\00a0\00a0'; /* simbolo CHECK* pega no site EMOGI pedia /
+    list-style-position: inside; /* as bolinhas fica para dentro do quadrado *, ñ é compativel com todo navegador/
+    columns: 2; /* dividir em 2 colunas */
+    list-style-position: inside;
+    columns: 2; /* colunas da lista */
+    
+}
+
+footer {
+
+    background-color: var(--cor5);
+    color: white;
+    text-align: center;
+    padding: 5px; /* espaçamento */
+}
+
+footer a{
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+footer a:hover{
+    text-decoration: underline;
+    color: var(--cor1);
+}
