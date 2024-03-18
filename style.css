@@ -10,7 +10,7 @@
 
 }
 
-:root {  /* tudo que for anotado aqui serve pro documento inteiro, isso abaixo são VARIAVEISc começa com --  */
+:root {  /* tudo que for anotado aqui serve pro documento inteiro, isso abaixo são VARIAVEIS começa com --  */
 
     --cor0: #c5ebd6;
     --cor1: #83e1ad;
@@ -52,7 +52,7 @@ header { /* Quadrado onde esta Curiosidade de tecnologia */
 
 header > h1 {  /* CURIOSIDADE DE TECNOLOGIA */
 
-   color: rgb(132, 228, 115);
+   color: rgb(94, 218, 72);
    font-family: var(--font-destaque);
    font-size: 3em;
    font-weight: normal;
@@ -62,14 +62,14 @@ header > h1 {  /* CURIOSIDADE DE TECNOLOGIA */
 }
 
 header > p { /*Tudo aquilo que voce sempre quis saber o mundo tech, em um unico lugar*/
-    font-family: var(--font-padrao);
-    font-size: 1.2em;  
+    font-family: var(--font-android);
+    font-size: 1.1em;  
     color: rgb(243, 252, 252);
     max-width: 600px;
     padding-right: 10px;
     padding-left: 10px;
     margin: auto;
-    margin-bottom: 20px;
+    padding-bottom: 50px;
     text-shadow: 2px 2px 0px rgba(14, 3, 12, 0.726); /* CRIAR SOMBRA */
 }
 
