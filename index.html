@@ -1,116 +1,381 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Como Surgiu o Mascote</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulário de Inscrição</title>
+	<style>
+		/* estilos para esconder e mostrar campos condicionais */
+		#acampamento-sim-campo,
+		#movimento-igreja-sim-campo,
+		#curso-escola-santo-andre-sim-campo,
+		#ecc-sim-campo,
+		#ejc-sim-campo,
+		#pastoral-sim-campo,
+		#coordenador-sim-campo,
+		#estado-civil-casado-campo {
+			display: none;
+		}
+
+		#acampamento-sim:checked~#acampamento-sim-campo,
+		#movimento-igreja-sim:checked~#movimento-igreja-sim-campo,
+		#curso-escola-santo-andre-sim:checked~#curso-escola-santo-andre-sim-campo,
+		#ecc-sim:checked~#ecc-sim-campo,
+		#ejc-sim:checked~#ejc-sim-campo,
+		#pastoral-sim:checked~#pastoral-sim-campo,
+		#coordenador-sim:checked~#coordenador-sim-campo,
+		#estado-civil-casado:checked~#estado-civil-casado-campo {
+			display: block;
+		}
+
+		/* estilos para a página */
+		body {
+			font-family: Open Sans, sans-serif;
+			background-color: #f7f7f7;
+			/* cor de fundo */
+			background-image: url('https://example.com/imagem-de-jesus.jpg');
+			/* URL da imagem de Jesus */
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+
+		main {
+			max-width: 800px;
+			margin: 40px auto;
+			padding: 20px;
+			background-color: rgba(255, 255, 255, 0.9);
+			/* cor de fundo do formulário com transparência */
+			border: 1px solid #ddd;
+			/* borda do formulário */
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			/* sombra do formulário */
+			border-radius: 10px;
+			/* cantos arredondados */
+		}
+
+		h2 {
+			color: #333;
+			/* cor do título */
+			margin-top: 0;
+			font-weight: bold;
+			font-size: 24px;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+			color: #666;
+			/* cor do label */
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="date"],
+		select {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			/* borda do input */
+			border-radius: 5px;
+			/* cantos arredondados */
+		}
+
+		input[type="radio"] {
+			margin-right: 10px;
+		}
+
+		button[type="submit"] {
+			background-color: #2196F3;
+			/* cor do botão */
+			color: #fff;
+			/* cor do texto do botão */
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #1976D2;
+			/* cor do botão ao passar o mouse */
+		}
+	</style>
 </head>
-    <body>
 
-        <header> <!--Cabeçalho-->
+<body>
+	<main>
+		<section>
+			<h2>Dados Pessoais</h2>
+			<form id="inscricao-form">
+				<!-- campos pessoais -->
+				<div class="form-group">
+					<label for="nome">Nome:</label>
+					<input type="text" id="nome" name="nome" required>
+				</div>
 
-            <h1>Curiosidade de tecnologia</h1>
+				<label for="foto">Foto:</label>
+				<input type="file" id="foto" name="foto" accept="image/*">
+				</div>
 
-            <p>Tudo aquilo que voce sempre quis saber o mundo tech, em um unico lugar</p>
+				<div class="form-group">
+					<label for="contato">Contato:</label>
+					<input type="text" id="contato" name="contato" required>
+				</div>
+				<div class="form-group">
+					<label for="data-nascimento">Data de Nascimento:</label>
+					<input type="date" id="data-nascimento" name="data-nascimento" required>
+					<label for="idade">Idade:</label>
+					<input type="number" id="idade" name="idade" readonly>
+				</div>
+				<div class="form-group">
+					<label>Estado Civil:</label>
+					<input type="radio" id="estado-civil-solteiro" name="estado-civil" value="Solteiro"> Solteiro
+					<input type="radio" id="estado-civil-casado" name="estado-civil" value="Casado"> Casado
+					<input type="radio" id="estado-civil-casado" name="estado-civil" value="Casado"> Divorciado(a)
+					<input type="radio" id="estado-civil-casado" name="estado-civil" value="Casado"> Viuvo(a)
+					<div id="estado-civil-casado-campo">
+						<label>Casamento:</label>
+						<input type="radio" id="casamento-civil" name="casamento" value="Civil"> Civil
+						<input type="radio" id="casamento-religioso" name="casamento" value="Religioso"> Religioso
+					</div>
+				</div>
 
-        </header>
+				<h2>Experiências</h2>
 
-        <nav> <!--MENU-->
+				<div class="form-group">
+					<label>Fez Acampamento ?</label>
+					<input type="radio" id="acampamento-sim" name="acampamento" value="sim"> Sim
+					<input type="radio" id="acampamento-nao" name="acampamento" value="nao"> Não
+					<div id="acampamento-sim-campo">
+						<label for="acampamento-ano">Ano:</label>
+						<input type="number" id="acampamento-ano" name="acampamento-ano">
+						<label for="acampamento-qual">Qual Acampamento?</label>
+						<select id="acampamento-qual" name="acampamento-qual">
+							<option value="Escolha">Escolha</option>
+							<option value="FAC">FAC</option>
+							<option value="Juvenil">Juvenil</option>
+							<option value="Senior">Sênior</option>
+							<option value="Casais">Casais</option>
+							<option value="Adventure">Adventure</option>
+							<option value="Mirim">Mirim</option>
+							<option value="Encontro Mulheres">Encontro Mulheres </option>
+							<option value="Encontro Homens">Encontro Homens</option>
+						</select>
+					</div>
+				</div>
 
-            <a href="#">Home</a>
-            <a href="#">Noticias</a>
-            <a href="#">Contato</a>
+				<div class="form-group">
+					<label>Fez Curso da Escola Santo André ?</label>
+					<input type="radio" id="curso-escola-santo-andre-sim" name="curso-escola-santo-andre" value="sim">
+					Sim
+					<input type="radio" id="curso-escola-santo-andre-nao" name="curso-escola-santo-andre" value="nao">
+					Não
+					<div id="curso-escola-santo-andre-sim-campo">
+						<label for="curso-escola-santo-andre-qual">Qual Curso?</label>
+						<select id="curso-escola-santo-andre-qual" name="curso-escola-santo-andre-qual">
+							<option value="Nova Vida">Nova Vida</option>
+							<option value="Historia da Salvação">Historia da Salvação</option>
+							<option value="Tetelestai">Tetelestai</option>
+							<option value="Curso João">Curso João</option>
+							<option value="Curso TITO">Curso TITO</option>
+							<option value="Discipulus de Emaús">Discípulos de Emaús</option>
+							<option value="Jesus nos 4 Evangelhos">Jesus nos 4 Evangelhos</option>
+							<option value="Moisés">Moisés</option>
+							<option value="Bem Aventuranças">Bem Aventuranças</option>
+						</select>
+						<label for="curso-escola-santo-andre-ano">Ano:</label>
+						<input type="number" id="curso-escola-santo-andre-ano" name="curso-escola-santo-andre-ano">
+					</div>
+				</div>
 
-        </nav>
+				<div class="form-group">
+					<label>Fez ECC ?</label>
+					<input type="radio" id="ecc-sim" name="ecc" value="sim"> Sim
+					<input type="radio" id="ecc-nao" name="ecc" value="nao"> Não
+					<div id="ecc-sim-campo">
+						<label for="ecc-etapa">Etapa :</label>
+						<select id="ecc-etapa" name="ecc-etapa">
+							<option value="1ª Etapa">1ª Etapa</option>
+							<option value="2ª Etapa">2ª Etapa</option>
+							<option value="3ª Etapa">3ª Etapa</option>
+						</select>
+						<label for="ecc-ano">Ano:</label>
+						<input type="number" id="ecc-ano" name="ecc-ano">
+						<label for="ecc-observacao">Observação:</label>
+						<input type="text" id="ecc-observacao" name="ecc-observacao" placeholder="escreva...">
+					</div>
+				</div>
 
-        <main> <!--Conteudo Principal-->
+				<div class="form-group">
+					<label>Serviu no EJC ?</label>
+					<input type="radio" id="ejc-sim" name="ejc" value="sim"> Sim
+					<input type="radio" id="ejc-nao" name="ejc" value="nao"> Não
+					<div id="ejc-sim-campo">
+						<label for="ejc-onde">Onde ?</label>
+						<input type="text" id="ejc-onde" name="ejc-onde">
+						<label for="ejc-ano">Ano:</label>
+						<input type="number" id="ejc-ano" name="ejc-ano">
+						<label for="ejc-observacao">Observação:</label>
+						<input type="text" id="ejc-observacao" name="ejc-observacao" placeholder="escreva...">
+					</div>
+				</div>
 
-            <article>
+				<div class="form-group">
+					<label>Participa de alguma Pastoral ?</label>
+					<input type="radio" id="pastoral-sim" name="pastoral" value="sim"> Sim
+					<input type="radio" id="pastoral-nao" name="pastoral" value="nao"> Não
+					<div id="pastoral-sim-campo">
+						<label for="pastoral-ano">Ano que entrou:</label>
+						<input type="number" id="pastoral-ano" name="pastoral-ano">
 
-                <h1>História do Mascote do Android</h1>
+						<select id="pastoral-qual" name="pastoral-qual">
+							<option value="Batismo">Batismo</option>
+							<option value="Acolhida">Acolhida</option>
+							<option value="Saúde">Saúde</option>
+							<option value="Familiar">Familiar</option>
+							<option value="Dízimo">Dízimo</option>
+							<option value="Musica">Musica</option>
+							<option value="Liturgia">Liturgia</option>
+							<option value="Vocacional">Vocacional</option>
+							<option value="Coroinhas">Coroinhas</option>
+							<option value="Outra">Outra</option>
+						</select>
+						<input type="text" id="pastoral-outra" name="pastoral-outra" placeholder="Outras...">
+					</div>
+				</div>
 
-                <p>Provavelmente você sabe que o sistema operacional <strong>Android</strong>, mantido pelo <strong>Google</strong> é um dos mais utilizados para dispositivos móveis em todo o mundo. Mas tavez você não saiba que o seu simpático mascote tem um nome e uma história muito curiosa? Pois acompanhe esse artigo para aprender muita coisa sobre esse robozinho.</p>
+				<div class="form-group">
+					<label>Já foi Coordenador?</label>
+					<input type="radio" id="coordenador-sim" name="coordenador" value="sim"> Sim
+					<input type="radio" id="coordenador-nao" name="coordenador" value="nao"> Não
+					<div id="coordenador-sim-campo">
+						<label for="coordenador-setor">Setor:</label>
+						<input type="text" id="coordenador-setor" name="coordenador-setor">
+						<label for="coordenador-ano">Ano:</label>
+						<input type="number" id="coordenador-ano" name="coordenador-ano">
+						<label for="coordenador-observacao">Observação:</label>
+						<input type="text" id="coordenador-observacao" name="coordenador-observacao">
+					</div>
+				</div>
 
-                <h2>A primeira versão</h2>
+				<div class="form-group">
+					<label>Qual outro movimento já trabalhou?</label>
+					<select id="outro-movimento" name="outro-movimento">
+						<option value="ECC">ECC</option>
+						<option value="EJC">EJC</option>
+						<option value="Pastoral">Pastoral</option>
+						<option value="Acampamentos">Acampamentos</option>
+						<option value="Outro">Outro</option>
+					</select>
+					<input type="text" id="outro-movimento-descricao" name="outro-movimento-descricao"
+						placeholder="Escreva o evento">
+					<label for="outro-movimento-ano">Ano:</label>
+					<input type="number" id="outro-movimento-ano" name="outro-movimento-ano">
+				</div>
 
-                <p>A primeira tentativa de criar um mascote surgiu em 2007 e veio de um desenvolvedor chamado
-                     <a href="https://ausdroid.net/news/2013/01/04/dan-morrill-shows-us-the-android-mascots-that-could-have-been/" target="_blank" class="externo">Dan Morrill</a>
+				<div class="form-group">
 
-                     . Ele conta que abriu o <a href="https://inkscape.org/pt-br/ " target="_blank" class="externo">Inkscape</a>
 
-                      (software livre para vetorização de imagens) e criou sua própria versão de robô. O objetivo era apenas personificar o sistema apenas para a a sua equipe, não existia nenhuma solicitação da empresa para a criação de um mascote.</p>
+					<button type="submit">Enviar Inscrição</button>
+			</form>
+		</section>
+	</main>
 
-                <picture> <!--Acertando a Imagen do BugDroid-->
-                    <source media="(max-width:670px )" srcset="imagens/dan-droids-pq.png"> <!--Imagem pequena para se adaptar-->
-                    <img src="imagens/dan-droids.png" alt="bugdroids"> <!--Imagem GRANDE para se adaptar-->
-                </picture>
+	<script>
+		// JavaScript para mostrar e esconder campos com base nas respostas dos rádios
+		document.addEventListener('DOMContentLoaded', () => {
+			const acampamentoSim = document.getElementById('acampamento-sim');
+			const acampamentoNao = document.getElementById('acampamento-nao');
+			const movimentoIgrejaSim = document.getElementById('movimento-igreja-sim');
+			const movimentoIgrejaNao = document.getElementById('movimento-igreja-nao');
+			const cursoEscolaSantoAndreSim = document.getElementById('curso-escola-santo-andre-sim');
+			const cursoEscolaSantoAndreNao = document.getElementById('curso-escola-santo-andre-nao');
+			const eccSim = document.getElementById('ecc-sim');
+			const eccNao = document.getElementById('ecc-nao');
+			const ejcSim = document.getElementById('ejc-sim');
+			const ejcNao = document.getElementById('ejc-nao');
+			const pastoralSim = document.getElementById('pastoral-sim');
+			const pastoralNao = document.getElementById('pastoral-nao');
+			const coordenadorSim = document.getElementById('coordenador-sim');
+			const coordenadorNao = document.getElementById('coordenador-nao');
+			const estadoCivilCasado = document.getElementById('estado-civil-casado');
+			const estadoCivilSolteiro = document.getElementById('estado-civil-solteiro');
+			const dataNascimento = document.getElementById('data-nascimento');
+			const idade = document.getElementById('idade');
 
-                <p>Essa primeira versão bizarra até foi batizada em homenagem ao seu criador: seriam os Dandroids.</p>
+			// Funções para mostrar e esconder campos
+			function updateAcampamentoCampos() {
+				document.getElementById('acampamento-sim-campo').style.display = acampamentoSim.checked ? 'block' : 'none';
+			}
 
-                <h2>Surge um novo mascote</h2>
+			function updateMovimentoIgrejaCampos() {
+				document.getElementById('movimento-igreja-sim-campo').style.display = movimentoIgrejaSim.checked ? 'block' : 'none';
+			}
 
-                <p>A ideia de ter um mascote foi amadurecendo e a missão foi passada para uma profissional da área. A ilustradora Russa <a href="https://www.irinablok.com/android" target="_blank" class="externo" class="externo">Irina Blok</a>, também funcionária do Google, ficou com a missão de representar o pequeno robô de uma maneira mais agradável.</p>
+			function updateCursoEscolaSantoAndreCampos() {
+				document.getElementById('curso-escola-santo-andre-sim-campo').style.display = cursoEscolaSantoAndreSim.checked ? 'block' : 'none';
+			}
 
-                <picture> <!--Acertando a Imagen do IRINA BLOK-->
+			function updateEccCampos() {
+				document.getElementById('ecc-sim-campo').style.display = eccSim.checked ? 'block' : 'none';
+			}
 
-                    <source media="(max-width:670px )" srcset="imagens/irina-blok-pq.jpg">  <!--Imagem pequena para se adaptar-->
-                    <img src="imagens/irina-blok.jpg" alt="Irina Blok - Criadora do Android"> <!--Imagem GRANDE para se adaptar-->
-                </picture>
+			function updateEjcCampos() {
+				document.getElementById('ejc-sim-campo').style.display = ejcSim.checked ? 'block' : 'none';
+			}
 
-                <p>A ideia principal da Irina era representar tudo graficamente com poucos traços e de forma mais chapada. O desenho também deveria gerar identificação rápida com quem o olha. Surgiu então o <strong>Bugdroid</strong>, o novo mascote do Android.</p>
+			function updatePastoralCampos() {
+				document.getElementById('pastoral-sim-campo').style.display = pastoralSim.checked ? 'block' : 'none';
+			}
 
-                <img src="imagens/bugdroid.png" class="pequena" alt="BugDroid">
+			function updateCoordenadorCampos() {
+				document.getElementById('coordenador-sim-campo').style.display = coordenadorSim.checked ? 'block' : 'none';
+			}
 
-                <p>A principal inspiração para os traços do novo <strong>Bugdroid </strong>veio daqueles bonequinhos que ilustram portas de banheiro para indicar o gênero de cada porta. Conta a lenda que a artista estava criando em sua mesa no escritório do <strong>Google</strong> e olhou para o lado dos banheiros e a identificação foi imediata: simples, limpo, objetivo.</p>
+			function updateEstadoCivilCampos() {
+				document.getElementById('estado-civil-casado-campo').style.display = estadoCivilCasado.checked ? 'block' : 'none';
+			}
 
-                <div class="video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/l2UDgpLz20M?si=RTfdLZjx97OGG4ds" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-                
-                <aside>  <!--CONTEUDO PERIFÉRICO-->
+			function calculateAge() {
+				const today = new Date();
+				const birthDate = new Date(dataNascimento.value);
+				let age = today.getFullYear() - birthDate.getFullYear();
+				const monthDiff = today.getMonth() - birthDate.getMonth();
+				if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+					age--;
+				}
+				idade.value = age;
+			}
 
-                    <h3>Quer aprender mais? </h3>
+			// Adicionando eventos
+			acampamentoSim.addEventListener('change', updateAcampamentoCampos);
+			acampamentoNao.addEventListener('change', updateAcampamentoCampos);
+			movimentoIgrejaSim.addEventListener('change', updateMovimentoIgrejaCampos);
+			movimentoIgrejaNao.addEventListener('change', updateMovimentoIgrejaCampos);
+			cursoEscolaSantoAndreSim.addEventListener('change', updateCursoEscolaSantoAndreCampos);
+			cursoEscolaSantoAndreNao.addEventListener('change', updateCursoEscolaSantoAndreCampos);
+			eccSim.addEventListener('change', updateEccCampos);
+			eccNao.addEventListener('change', updateEccCampos);
+			ejcSim.addEventListener('change', updateEjcCampos);
+			ejcNao.addEventListener('change', updateEjcCampos);
+			pastoralSim.addEventListener('change', updatePastoralCampos);
+			pastoralNao.addEventListener('change', updatePastoralCampos);
+			coordenadorSim.addEventListener('change', updateCoordenadorCampos);
+			coordenadorNao.addEventListener('change', updateCoordenadorCampos);
+			estadoCivilCasado.addEventListener('change', updateEstadoCivilCampos);
+			estadoCivilSolteiro.addEventListener('change', updateEstadoCivilCampos);
+			dataNascimento.addEventListener('change', calculateAge);
+		});
+	</script>
+</body>
 
-                
-                    <p>Outro assunto curioso em relação ao Android é que cada versão sempre foi nomeada em homenagem a um doce, em ordem alfabética a partir da versão 1.5 até a 9.0.</p>
-
-                    <ul type="circle">
-                        
-                        <li>1.5 - <abbr title="Bolo de Copo">Cupcake</abbr></li> <!--Envelopando com abb(ctr+sht+p) - depois abbr, no site mostra a descrição e cada ITEM-->
-                        <li>1.6 - <abbr title="Rosquinha">Donut</abbr></li>
-                        <li>3.0 - <abbr title="Bomba">Eclair</abbr></li>
-                        <li>2.2 - <abbr title="Iogurte COngelado">Froyo</abbr></li>
-                        <li>2.3 - <abbr title="Biscoito de gengibre">Gingerbread</abbr></li>
-                        <li>3.0 - <abbr title="Favo de mel">Honeycomb</abbr></li>
-                        <li>4.0 - <abbr title="Sanduiche de sorvete">Ice Cream Sandwich</abbr></li>
-                        <li>4.1 - <abbr title="Jujuba">Jelly Bean</abbr></li>
-                        <li>4.4 - <abbr title="Kit Kat">KitKat</abbr></li>
-                        <li>5.0 - <abbr title="Pirulito">Lolipop</abbr></li>
-                        <li>6.0 - <abbr title="Marshmallow">Marshmallow</abbr></li>
-                        <li>7.0 - <abbr title="Torrone">Nougat</abbr></li>
-                        <li>8.0 - <abbr title="Oreo">Oreo</abbr></li>
-                        <li>9.0 - <abbr title="Torta">Pie</abbr></li>
-
-                    </ul>
-                    <br>
-
-                    Infelizmente, o <strong>Android Q</strong> não existiu, pois o Google resolveu pôr fim a essa divertida prática e começou a usar numerações, o que deu origem ao Android 10.
-                    Acesse aqui o site <a href="https://www.android.com/intl/en_uk/history/#/donut" target="_blank" class="externo">Android History</a> para conhecer a sequência das versões "adocicadas" e o que cada uma trouxe para o sistema Android.
-                </aside><br>
-                
-
-                Então é isso! Espero que você tenha gostado do nosso artigo com essa curiosidade sobre o sistema <strong>Android </strong>e seu simpático mascote.
-                        
-                
-
-            </article>
-
-        </main>
-        <footer>
-
-            Site criado por <a href="https://github.com/ZecaRomero" target="_blank">Zeca Romerao</a> para Estudos 2024, bora bora.
-            
-        </footer>
-        
-    </body>
 </html>
